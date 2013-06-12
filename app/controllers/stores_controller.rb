@@ -3,6 +3,10 @@ class StoresController < ApplicationController
     @stores = Store.page(params[:page]).per(16)
   end
 
+  def show
+    @store = Store.find(params[:id])
+  end
+
   def new
     @store = Store.new
     @store.links = [Link.new] if @store.links.blank?
