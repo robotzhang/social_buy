@@ -1,0 +1,7 @@
+<ul>
+<% @stores.each do |store| %>
+    <li><%=store.name%></li>
+<% end %>
+</ul>
+
+<%= paginate @stores, :theme => 'bootstrap' %>

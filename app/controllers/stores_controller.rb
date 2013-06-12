@@ -1,4 +1,8 @@
 class StoresController < ApplicationController
+  def index
+    @stores = Store.page(params[:page]).per(16)
+  end
+
   def new
     @store = Store.new
     @store.links = [Link.new] if @store.links.blank?
