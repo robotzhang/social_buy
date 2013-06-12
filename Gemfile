@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-#source 'http://ruby.taobao.org/'
+#source 'https://rubygems.org'
+source 'http://ruby.taobao.org/'
 
 gem 'rails', '3.2.11'
 
@@ -23,6 +23,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+# 三方平台 OAuth 验证登陆
+gem "omniauth", "~> 1.0.1"
+gem 'omniauth-weibo-oauth2'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
