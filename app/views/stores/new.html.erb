@@ -1,0 +1,11 @@
+<%=@store.errors.full_messages%>
+<%= form_for @store do |f| %>
+    <%= f.label :name, "店铺名称" %>
+    <%= f.text_field :name %>
+    <%= f.fields_for :links do |b| %>
+        <%= b.label :url, "店铺url" %>
+        <%= b.text_field :url %>
+    <% end %>
+
+    <%= f.submit "提交", :class => "btn btn-info" %>
+<% end %>
