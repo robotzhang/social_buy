@@ -2,6 +2,7 @@ class StoresController < ApplicationController
   def new
     @store = Store.new
     @store.links = [Link.new] if @store.links.blank?
+    @store.businesses = [Business.new] if @store.businesses.blank?
   end
 
   def create

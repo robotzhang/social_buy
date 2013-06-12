@@ -2,6 +2,10 @@
 <%= form_for @store do |f| %>
     <%= f.label :name, "店铺名称" %>
     <%= f.text_field :name %>
+    <%= f.fields_for :businesses do |b| %>
+        <%= b.label :name, "主营业务" %>
+        <%= b.text_field :name %>
+    <% end %>
     <%= f.fields_for :links do |b| %>
         <%= b.label :url, "店铺url" %>
         <%= b.text_field :url %>
