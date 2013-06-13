@@ -6,10 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_uid(params[:id])
-    client = WeiboOAuth2::Client.new("3373872336", "61c1cad771b81df57ae88034dc9bb830", :ssl => {:ca_file => Rails.root.join('lib/assets/cacert.pem').to_s})
-    client.get_token_from_hash({:access_token=>session[:token],:expires_at=>session[:expires_at]})
-    statuses = client.statuses
-    statuses.update('用微博api发送的微博')
+    @friendships = self.weibo_client.friendships
   end
 
   def create

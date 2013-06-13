@@ -1,0 +1,12 @@
+defaults: &defaults
+  weibo_id: '3373872336'
+  weibo_secret: '61c1cad771b81df57ae88034dc9bb830'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,2 +1,13 @@
-<%= @user %>
-<%=debug @auth%>
+你好：<%= @user.name %> <small>互粉的好友列表</small>
+<ul class="unstyled">
+<% @friendships.friends_bilateral(@user.uid).users.each do |friend| %>
+  <li>
+    <div class="pull-left"><img src="<%=friend.profile_image_url%>"/></div>
+    <div>
+      <div><%= friend.screen_name %></div>
+      <div><%= friend.description %></div>
+    </div>
+    <div class="clearfix"></div>
+  </li>
+<% end %>
+</ul>
