@@ -27,6 +27,7 @@ gem 'jquery-rails'
 # 三方平台 OAuth 验证登陆
 gem "omniauth", "~> 1.0.1"
 gem 'omniauth-weibo-oauth2'
+gem 'weibo_2'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
