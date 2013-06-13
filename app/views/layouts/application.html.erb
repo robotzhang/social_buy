@@ -16,10 +16,15 @@
           <li><a href="<%= stores_path %>">店铺</a></li>
           <li><a href="">标签</a></li>
         </ul>
-        <ul class="nav pull-right">
-          <li><a href="<%= new_user_path %>">注册</a></li>
-          <li><a href="#">登录</a></li>
-        </ul>
+        <div class="pull-right">
+          <% if signed_in? %>
+            <ul class="nav">
+              <li class="dropdown"><a href="<%= user_path(current_user.uid) %>"><i class="icon-user icon-white"></i> <%= current_user.name %></a> </li>
+            </ul>
+          <% else %>
+            <a href="/auth/weibo" class="btn btn-info btn-small">新浪微博登录</a>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
