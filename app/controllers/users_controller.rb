@@ -21,5 +21,6 @@ class UsersController < ApplicationController
 
   def logout
     self.current_user = nil
+    redirect_to (params[:back_url] || root_path)
   end
 end
