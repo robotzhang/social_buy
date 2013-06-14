@@ -1,5 +1,6 @@
 #coding=utf-8
 class UsersController < ApplicationController
+  before_filter :find_user, :only => [:show, :stores]
   def new
 
   end
@@ -22,5 +23,15 @@ class UsersController < ApplicationController
   def logout
     self.current_user = nil
     redirect_to (params[:back_url] || root_path)
+  end
+
+  def stores
+
+  end
+
+  protected
+  def find_user
+    @user = User.find_by_uid(params[:id])
+    render_404 if @user.nil?
   end
 end

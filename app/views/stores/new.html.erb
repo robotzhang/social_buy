@@ -1,15 +1,25 @@
-<%=@store.errors.full_messages%>
+<%=@store.errors.full_messages if @store.errors.any?%>
 <%= form_for @store do |f| %>
+  <div class="control-group">
     <%= f.label :name, "店铺名称" %>
     <%= f.text_field :name %>
-    <%= f.fields_for :businesses do |b| %>
-        <%= b.label :name, "主营业务" %>
-        <%= b.text_field :name %>
-    <% end %>
-    <%= f.fields_for :links do |b| %>
-        <%= b.label :url, "店铺url" %>
-        <%= b.text_field :url %>
-    <% end %>
+  </div>
 
+  <div class="control-group">
+  <%= f.fields_for :businesses do |b| %>
+      <%= b.label :name, "主营业务" %>
+      <%= b.text_field :name %>
+  <% end %>
+  </div>
+
+  <div class="control-group">
+  <%= f.fields_for :links do |b| %>
+      <%= b.label :url, "店铺url" %>
+      <%= b.text_field :url %>
+  <% end %>
+  </div>
+
+  <div class="control-group">
     <%= f.submit "提交", :class => "btn btn-info" %>
+  </div>
 <% end %>

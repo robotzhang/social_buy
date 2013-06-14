@@ -2,6 +2,7 @@ require 'open-uri'
 class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :friends
+  has_many :stores
 
   validates :name, uniqueness: true, presence: true
   validates :uid, uniqueness: true, presence: true
