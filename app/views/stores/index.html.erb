@@ -1,6 +1,17 @@
-<ul>
+<ul class="unstyled">
 <% @stores.each do |store| %>
-    <li><a href="<%= store_path(store) %>"><%=store.name%></a></li>
+    <li>
+      <div class="pull-left"><img style="width: 60px; height: 60px;" src="<%=store.user.image%>" /></div>
+      <div>
+        <a href="<%= store_path(store) %>"><%=store.name%></a>
+        <div>
+          <% store.businesses.each do |business| %>
+            <span><%=business.name%></span>
+          <% end %>
+        </div>
+        <div><%= store.description %></div>
+      </div>
+    </li>
 <% end %>
 </ul>
 

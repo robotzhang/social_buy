@@ -1,5 +1,6 @@
 class Store < ActiveRecord::Base
   attr_accessible :name, :description, :links_attributes, :businesses_attributes
+  belongs_to :user
   has_many :links, :dependent => :destroy
   has_many :businesses, :dependent => :destroy
   accepts_nested_attributes_for :links, :businesses, :allow_destroy => true

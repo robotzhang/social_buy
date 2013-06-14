@@ -5,7 +5,7 @@ class StoresController < ApplicationController
   end
 
   def show
-    @store = Store.find(params[:id])
+    @store = Store.includes([:user]).find(params[:id])
   end
 
   def new
@@ -19,6 +19,7 @@ class StoresController < ApplicationController
 
   def create
     @store = Store.new(params[:store])
+    @store.user_id = current_user.id
     @store.save
     render :action => :new
   end

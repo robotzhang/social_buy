@@ -18,18 +18,18 @@
         <%= business.name %>
         <a style="color: #fff;" title="删除" href="#">&times;</a>
       </span>
-      <input type="text" name="add_business"/>
       <%= f.fields_for :businesses, business do |b| %>
         <%= b.hidden_field :id %>
         <%= b.hidden_field :name %>
       <% end %>
     <% end %>
+    <div>
+      <input type="text" name="add_business"/><button type="" class="btn"><i class="icon-plus-sign"></i>添加</button>
+    </div>
   </div>
 
   <div class="control-group">
-    <label>店铺网址
-      <a href="javascript:void(0);"><i class="icon-plus-sign"></i><small>添加更多</small></a>
-    </label>
+    <label>店铺网址</label>
     <% @store.links.each do |link| %>
       <span title="<%= link.name %>"><%= link.url %></span>
       <a href="" title="编辑"><i class="icon-edit"></i></a>
@@ -39,6 +39,9 @@
         <%= b.hidden_field :name %>
       <% end %>
     <% end %>
+    <div>
+      <input type="text" name="add_link"/><button type="" class="btn"><i class="icon-plus-sign"></i>添加</button>
+    </div>
   </div>
 
   <div class="control-group">
