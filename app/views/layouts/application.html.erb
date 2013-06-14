@@ -25,6 +25,7 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="<%=user_path(current_user.uid)%>">我的主页</a></li>
+                  <li><a href="<%= stores_user_path(current_user.uid) %>">我的店铺</a></li>
                   <li><a href="<%=logout_path(:back_url => request.url)%>">退出</a></li>
                 </ul>
               </li>

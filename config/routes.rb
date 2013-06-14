@@ -1,6 +1,11 @@
 SocialBuy::Application.routes.draw do
   root :to => 'application#index'
   get 'logout' => 'users#logout'
-  resources :users, :stores
+  resources :users do
+    member do
+      get "stores"
+    end
+  end
+  resources :stores
   get '/auth/:provider/callback', to: 'users#create'
 end
