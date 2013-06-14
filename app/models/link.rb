@@ -4,7 +4,7 @@ class Link < ActiveRecord::Base
   belongs_to :store
 
   #validates :name, presence: true, uniqueness: true
-  validates :url, presence: true, uniqueness: true
+  validates :url, presence: true, uniqueness: {scope: :store_id}
 
   def self.parser(url)
     link = Link.new
@@ -12,6 +12,6 @@ class Link < ActiveRecord::Base
     link.url = url
     link.name = page.css("title").text
 
-    link
+    [page, link]
   end
 end

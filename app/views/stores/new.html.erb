@@ -6,17 +6,29 @@
   </div>
 
   <div class="control-group">
+    <%= f.label :description, "店铺介绍" %>
+    <%= f.text_area :description, :rows => "3" %>
+  </div>
+
+  <div class="control-group">
   <%= f.fields_for :businesses do |b| %>
-      <%= b.label :name, "主营业务" %>
-      <%= b.text_field :name %>
+    <%= b.label :name, "主营产品" %>
+    <%= b.text_field :name %>
   <% end %>
   </div>
 
   <div class="control-group">
-  <%= f.fields_for :links do |b| %>
-      <%= b.label :url, "店铺url" %>
-      <%= b.text_field :url %>
-  <% end %>
+    <label>店铺网址
+      <a href="javascript:void(0);"><i class="icon-plus-sign"></i><small>添加更多</small></a>
+    </label>
+    <% @store.links.each do |link| %>
+      <span title="<%= link.name %>"><%= link.url %></span>
+      <a href="" title="编辑"><i class="icon-edit"></i></a>
+      <%= f.fields_for :links, link do |b| %>
+          <%= b.hidden_field :url %>
+          <%= b.hidden_field :name %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="control-group">
