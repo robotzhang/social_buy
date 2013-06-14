@@ -11,10 +11,19 @@
   </div>
 
   <div class="control-group">
-  <%= f.fields_for :businesses do |b| %>
-    <%= b.label :name, "主营产品" %>
-    <%= b.text_field :name %>
-  <% end %>
+    <label>主营产品</label>
+    <% @store.businesses.each do |business| %>
+      <span class="label label-inverse" style="font-size: 12px; padding: 5px;">
+        <i class="icon-tag icon-white"></i>
+        <%= business.name %>
+        <a style="color: #fff;" title="删除" href="#">&times;</a>
+      </span>
+      <input type="text" name="add_business"/>
+      <%= f.fields_for :businesses, business do |b| %>
+        <%= b.hidden_field :id %>
+        <%= b.hidden_field :name %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="control-group">
@@ -25,8 +34,9 @@
       <span title="<%= link.name %>"><%= link.url %></span>
       <a href="" title="编辑"><i class="icon-edit"></i></a>
       <%= f.fields_for :links, link do |b| %>
-          <%= b.hidden_field :url %>
-          <%= b.hidden_field :name %>
+        <%= b.hidden_field :id %>
+        <%= b.hidden_field :url %>
+        <%= b.hidden_field :name %>
       <% end %>
     <% end %>
   </div>
