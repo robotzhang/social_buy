@@ -1,15 +1,19 @@
 <ul class="unstyled">
 <% @stores.each do |store| %>
     <li>
-      <div class="pull-left"><img style="width: 60px; height: 60px;" src="<%=store.user.image%>" /></div>
+      <div class="pull-left">
+        <a title="<%= store.user.name %>" href="<%= user_path(store.user.uid) %>">
+            <img style="width: 60px; height: 60px;" src="<%=store.user.image%>" />
+        </a>
+      </div>
       <div>
         <a href="<%= store_path(store) %>"><%=store.name%></a>
+        <div><%= store.description %></div>
         <div>
           <% store.businesses.each do |business| %>
-            <span><%=business.name%></span>
+              <span><%= link_to business.name, "b/"+business.name %></span>
           <% end %>
         </div>
-        <div><%= store.description %></div>
       </div>
     </li>
 <% end %>
