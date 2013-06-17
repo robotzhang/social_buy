@@ -1,22 +1,24 @@
-<ul class="unstyled">
+<div class="row stores">
 <% @stores.each do |store| %>
-    <li>
-      <div class="pull-left">
-        <a title="<%= store.user.name %>" href="<%= user_path(store.user.uid) %>">
-            <img style="width: 60px; height: 60px;" src="<%=store.user.image%>" />
-        </a>
+    <div class="span6">
+      <div class="store">
+          <div class="head-pic">
+            <a title="<%= store.user.name %>" href="<%= user_path(store.user.uid) %>">
+              <img style="width: 60px; height: 60px;" src="<%=store.user.image%>" />
+            </a>
+          </div>
+          <div class="info">
+            <a href="<%= store_path(store) %>"><%=store.name%></a>
+            <div><%= store.description %></div>
+            <div>
+              <% store.businesses.each do |business| %>
+                  <span><%= link_to business.name, "b/"+business.name %></span>
+              <% end %>
+            </div>
+          </div>
       </div>
-      <div>
-        <a href="<%= store_path(store) %>"><%=store.name%></a>
-        <div><%= store.description %></div>
-        <div>
-          <% store.businesses.each do |business| %>
-              <span><%= link_to business.name, "b/"+business.name %></span>
-          <% end %>
-        </div>
-      </div>
-    </li>
+    </div>
 <% end %>
-</ul>
+</div>
 
 <%= paginate @stores, :theme => 'bootstrap' %>

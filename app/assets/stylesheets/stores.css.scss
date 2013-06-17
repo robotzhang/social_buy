@@ -1,3 +1,9 @@
 // Place all the styles related to the stores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.stores .store { border: #dadada 1px solid; padding: 10px; border-radius: 3px; margin-bottom: 10px; }
+.stores .store .head-pic { float: left; }
+.stores .store .head-pic img { border-radius: 3px; }
+.stores .store .info { margin-left: 70px; }
+
