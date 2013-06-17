@@ -1,3 +1,9 @@
+<h5>我的店铺</h5>
+<ul>
+  <% @user.stores.each do |store| %>
+  <li><%= store.name %> <a href="<%= edit_store_path(store.id) %>">编辑</a></li>
+  <% end %>
+</ul>
 <form class="form-inline" method="get" action="<%= new_store_path %>">
   网店地址：
   <input type="text" name="url" value=""/>

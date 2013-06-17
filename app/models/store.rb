@@ -8,9 +8,12 @@ class Store < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   def self.parser_description(page)
-    keywords = page.xpath("//meta[@name='description']/@content").first.value
-    description = page.xpath("//meta[@name='keywords']/@content").first.value
-
-    (description.blank? ? "" : description) + " - " + (keywords.blank? ? "" : keywords)
+    keywords = page.xpath("//meta[@name='description']/@content")
+    keywords = keywords.blank? ? "" : keywords.first.value
+    description = page.xpath("//meta[@name='keywords']/@content")
+    description = description.blank? ? "" : description.first.value
+    ret = description + " - " + keywords
+    return "" if ret == ' - '
+    ret
   end
 end
