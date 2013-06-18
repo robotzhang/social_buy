@@ -9,12 +9,12 @@ class StoresController < ApplicationController
   end
 
   def new
-    @store = Store.new
-    page, link = Link.parser(params[:url])
-    @store.name = link.name
-    @store.description = Store.parser_description(page)
-    @store.links << link
-    @store.businesses = [Business.new] if @store.businesses.blank?
+    link = params[:url]
+    link = link.starts_with?('http') ? link : 'http://'+link
+    if Link.find_by_url(link)
+      return redirect_to(stores_user_path(current_user.uid))
+    end
+    @store = Store.new_with_url(link)
   end
 
   def create

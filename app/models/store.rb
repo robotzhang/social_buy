@@ -16,4 +16,15 @@ class Store < ActiveRecord::Base
     return "" if ret == ' - '
     ret
   end
+
+  def self.new_with_url(url)
+    store = Store.new
+    page, link = Link.parser(url)
+    store.name = link.name
+    store.description = Store.parser_description(page)
+    store.links << link
+    store.businesses = [Business.new] if store.businesses.blank?
+
+    store
+  end
 end
