@@ -1,50 +1,46 @@
 <%=@store.errors.full_messages if @store.errors.any?%>
-<%= form_for @store do |f| %>
+<%= form_for @store, :html => {:class=>"form-horizontal new-store-form"} do |f| %>
   <div class="control-group">
-    <%= f.label :name, "店铺名称" %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :description, "店铺介绍" %>
-    <%= f.text_area :description, :rows => "3" %>
-  </div>
-
-  <div class="control-group">
-    <label>主营产品</label>
-    <% @store.businesses.each do |business| %>
-      <span class="label label-inverse" style="font-size: 12px; padding: 5px;">
-        <i class="icon-tag icon-white"></i>
-        <%= business.name %>
-        <a style="color: #fff;" title="删除" href="#">&times;</a>
-      </span>
-      <%= f.fields_for :businesses, business do |b| %>
-        <%= b.hidden_field :id %>
-        <%= b.hidden_field :name %>
-      <% end %>
-    <% end %>
-    <div>
-      <input type="text" name="add_business"/><button type="" class="btn"><i class="icon-plus-sign"></i>添加</button>
+    <%= f.label :name, "店铺名称", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :name %>
     </div>
   </div>
 
   <div class="control-group">
-    <label>店铺网址</label>
-    <% @store.links.each do |link| %>
-      <span title="<%= link.name %>"><%= link.url %></span>
-      <a href="" title="编辑"><i class="icon-edit"></i></a>
-      <%= f.fields_for :links, link do |b| %>
-        <%= b.hidden_field :id %>
-        <%= b.hidden_field :url %>
-        <%= b.hidden_field :name %>
-      <% end %>
-    <% end %>
-    <div>
-      <input type="text" name="add_link"/><button type="" class="btn"><i class="icon-plus-sign"></i>添加</button>
+    <%= f.label :description, "店铺介绍", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_area :description, :rows => "3" %>
     </div>
   </div>
 
   <div class="control-group">
+    <label class="control-label" for="businesses">主营产品</label>
+    <div class="controls">
+      <input type="text" name="businesses" value="<%= @store.businesses.map {|business| business.name}.join(" ") %> "/>
+      <div>
+        <small>多个主营产品用空格分隔</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">店铺网址</label>
+    <div class="controls">
+      <% @store.links.each do |link| %>
+        <span class="input-xlarge uneditable-input" title="<%= link.name %>"><%= link.url %></span>
+        <a href="javascript:void(0);"><i class="icon-plus-sign"></i>添加更多</a>
+        <%= f.fields_for :links, link do |b| %>
+          <%= b.hidden_field :id %>
+          <%= b.hidden_field :url %>
+          <%= b.hidden_field :name %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-actions">
     <%= f.submit "提交", :class => "btn btn-info" %>
+    <a href="<%= user_path(current_user.uid) %>">取消</a>
   </div>
 <% end %>

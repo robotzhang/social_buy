@@ -20,8 +20,7 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(params[:store])
     @store.user_id = current_user.id
-    @store.save
-    render :action => :new
+    @store.save ? redirect_to(stores_user_path(current_user.uid)) : render(:action => :new)
   end
 
   def edit
@@ -31,6 +30,7 @@ class StoresController < ApplicationController
 
   def update
     @store = Store.find(params[:id])
-    @store.update_attributes(params[:store]) ? redirect_to(:action => :index) : render(:action => :edit)
+    @store.businesses = Business.find_or_new_by_names(params[:businesses].split(" ")) if params[:businesses]
+    @store.update_attributes(params[:store]) ? redirect_to(stores_user_path(current_user.uid)) : render(:action => :edit)
   end
 end

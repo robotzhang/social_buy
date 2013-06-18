@@ -9,12 +9,12 @@
           </div>
           <div class="info">
             <a href="<%= store_path(store) %>"><%=store.name%></a>
-            <div><%= store.description %></div>
-            <div>
+            <div class="text" style="font-size: 12px; color: #666;"><%= store.description %></div>
+            <ul class="tags unstyled">
               <% store.businesses.each do |business| %>
-                  <span><%= link_to business.name, "b/"+business.name %></span>
+                  <li><code><%= link_to business.name, "b/"+business.name %></code></li>
               <% end %>
-            </div>
+            </ul>
           </div>
       </div>
     </div>
