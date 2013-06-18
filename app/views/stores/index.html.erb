@@ -10,7 +10,7 @@
           <div class="info">
             <a href="<%= store_path(store) %>"><%=store.name%></a>
             <div class="text" style="font-size: 12px; color: #666;"><%= store.description %></div>
-            <ul class="tags unstyled">
+            <ul class="tags unstyled clearfix">
               <% store.businesses.each do |business| %>
                   <li><code><%= link_to business.name, "b/"+business.name %></code></li>
               <% end %>
