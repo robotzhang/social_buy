@@ -1,1 +1,16 @@
-<%= @store.name %>
+<div style="margin-bottom: 10px;">
+  <div><%= @store.name %></div>
+  <small><%= @store.description %></small>
+</div>
+<ul class="tags unstyled clearfix">
+  <li style="margin-right: 5px;"><i title="主营产品" class="icon-tags"></i></li>
+  <% @store.businesses.each do |business| %>
+      <li><code><%= link_to business.name, "b/"+business.name %></code></li>
+  <% end %>
+</ul>
+
+<ul class="unstyled clearfix">
+  <% @store.links.each do |link| %>
+  <li><a href="<%= link.url %>"><%= link.url %></a></li>
+  <% end %>
+</ul>
