@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   def index
+    @stores = Store.includes([:user]).page(params[:page]).per(10).all
     render :template => "index"
   end
 

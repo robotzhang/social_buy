@@ -12,3 +12,5 @@
  *= require bootstrap
  *= require_tree .
  */
+
+.cards li { float: left; box-shadow: 0 0 8px #666; padding: 20px; width: 240px; margin-right: 20px; }

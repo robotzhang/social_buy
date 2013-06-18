@@ -1,65 +1,57 @@
-<a href="" class="btn btn-info">看看朋友们的好东西</a>
-
-<div>
-  <p>我的店铺</p>
-  <div><label>店铺名称</label><input value="" name="name"/></div>
-  <div><label>主营业务</label><input value="" name="name"/></div>
-  <div><label>店铺连接</label><input value="" name="name"/></div>
-  <div><label>&nbsp;</label>+更多店铺</div>
-  <div><button>确定</button></div>
+<div class="slogan">
+  找最好的朋友，买/卖最好的东西
 </div>
 
 <div>
-  <p>好友店铺</p>
-  <ul>
+  <ul class="cards unstyled clearfix">
     <li>
-      <div style="float: left;">
-        <div>头像</div>
-        ecbox
-      </div>
-      <div>
-        <div>
-          <div>店铺名称</div>
-          <div>主营业务(可过滤)</div>
-        </div>
-      </div>
+      <p>简单</p>
+      <div>只需要10秒就可以将店铺广播给朋友们了~~</div>
+      <div><small>再也不要QQ，邮件等等一个一个得告诉朋友们我有自己的店铺了。</small></div>
+    </li>
+    <li>
+      <p>大气</p>
+      <div>美观大气的店铺模板，屌丝瞬间变成高富帅</div>
+      <div><small>个性化时代彻底告别千篇一律的店铺风格</small></div>
+    </li>
+    <li>
+      <p>省心</p>
+      <div>几乎不用维护，免费获取流量</div>
+      <div><small>竞价神马的坑爹货见鬼去吧</small></div>
+    </li>
   </ul>
+  <form class="form-inline" method="get" action="<%= new_store_path %>">
+    网店地址：
+    <div class="input-append">
+      <input type="text" name="url" value=""/>
+      <button type="submit" class="btn btn-info">立刻告诉大家</button>
+    </div>
+  </form>
 </div>
 
-
 <div>
-  <div>你想买什么？</div>
-  <div><input name=""/><button>找找看</button></div>
-</div>
-
-<div>
-  主营<strong>电话卡</strong>的亲们...
-  <ul>
-    <li>A</li>
-    <li>B</li>
-    <li>C->是你a朋友的->b朋友的朋友</li>
+  <ul class="cards unstyled clearfix">
+    <li>
+      <p>便宜</p>
+      <div>哥儿几个给点优惠不成问题~~</div>
+      <div><small>哥们会一口一个亲，然后一刀刀宰你吗？真低价，实优惠</small></div>
+    </li>
+    <li>
+      <p>信得过</p>
+      <div>你以为我会不知道哥们是不是信口开河的人吗？</div>
+      <div><small>让那些夸大其词的见鬼去吧，哥们最知道合适我的产品是什么</small></div>
+    </li>
+    <li>
+      <p>零纠纷</p>
+      <div>哥们在呢，再也不怕没人售后问题没人理了！</div>
+      <div><small>哥们的产品，售后一句话的事</small></div>
+    </li>
   </ul>
-  <div>这里有我的朋友？<button>登录</button></div>
+  <div><a href="" class="btn btn-info">看看都有什么</a></div>
 </div>
 
-<div>
-  我的消息
-  <ul>
-    <li>BB霜，能优惠吗？<small>来自xxx 2013-3-5</small>Email!</li>
-  </ul>
-</div>
-
-<div>
-  <a href="">告诉我的好朋友</a>
-</div>
-
-<div>
-  <div>好友列表</div>
-  <ul>
-    <li>查看Ta好友的店铺</li>
-  </ul>
-</div>
-
-<div>
-  想要：<input name=""/>
-</div>
+<ul>
+  <% @stores.each do |store| %>
+  <li><%=store.name%></li>
+  <% end %>
+</ul>
