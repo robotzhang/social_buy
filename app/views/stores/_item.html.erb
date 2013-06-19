@@ -1,0 +1,26 @@
+<div class="store-item mb20 clearfix">
+  <div class="user-info pull-left">
+    <a title="<%= store.user.name %>" href="<%= user_path(store.user.uid) %>"><img src="<%=store.user.image%>" /></a>
+  </div>
+  <div class="store-info box padding10">
+    <div class="pop-triangle"></div>
+    <div class="info">
+      <div>
+        <a href="<%= store_url(store) %>"><%= store.name %></a>
+      </div>
+
+      <div class="date">
+        <small><%= store.created_at.to_date %></small>
+      </div>
+
+      <div class="fs12" style="margin-bottom: 8px;"><%= truncate(store.description, :length => 100) %></div>
+
+      <ul class="tags unstyled clearfix">
+        <li style="margin-right: 5px;"><i class="icon-tags" title="主营业务"></i></li>
+        <% store.businesses.each do |business| %>
+            <li><code><%= link_to business.name, "b/"+business.name %></code></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

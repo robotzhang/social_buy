@@ -1,57 +1,35 @@
-<div class="slogan">
-  找最好的朋友，买/卖最好的东西
-</div>
-
-<div>
-  <ul class="cards unstyled clearfix">
-    <li>
-      <p>简单</p>
-      <div>只需要10秒就可以将店铺广播给朋友们了~~</div>
-      <div><small>再也不要QQ，邮件等等一个一个得告诉朋友们我有自己的店铺了。</small></div>
-    </li>
-    <li>
-      <p>大气</p>
-      <div>美观大气的店铺模板，屌丝瞬间变成高富帅</div>
-      <div><small>个性化时代彻底告别千篇一律的店铺风格</small></div>
-    </li>
-    <li>
-      <p>省心</p>
-      <div>几乎不用维护，免费获取流量</div>
-      <div><small>竞价神马的坑爹货见鬼去吧</small></div>
-    </li>
-  </ul>
-  <form class="form-inline" method="get" action="<%= new_store_path %>">
-    网店地址：
-    <div class="input-append">
-      <input type="text" name="url" value=""/>
-      <button type="submit" class="btn btn-info">立刻告诉大家</button>
-    </div>
-  </form>
-</div>
-
-<div>
-  <ul class="cards unstyled clearfix">
-    <li>
-      <p>便宜</p>
-      <div>哥儿几个给点优惠不成问题~~</div>
-      <div><small>哥们会一口一个亲，然后一刀刀宰你吗？真低价，实优惠</small></div>
-    </li>
-    <li>
-      <p>信得过</p>
-      <div>你以为我会不知道哥们是不是信口开河的人吗？</div>
-      <div><small>让那些夸大其词的见鬼去吧，哥们最知道合适我的产品是什么</small></div>
-    </li>
-    <li>
-      <p>零纠纷</p>
-      <div>哥们在呢，再也不怕没人售后问题没人理了！</div>
-      <div><small>哥们的产品，售后一句话的事</small></div>
-    </li>
-  </ul>
-  <div><a href="" class="btn btn-info">看看都有什么</a></div>
-</div>
-
-<ul>
+<div class="row">
+  <div class="span8">
   <% @stores.each do |store| %>
-  <li><%=store.name%></li>
+    <%=render "stores/item", store: store %>
   <% end %>
-</ul>
+  </div>
+  <div class="span4">
+    <div class="box padding10 clearfix">
+      <div>这是个什么东东？</div>
+      <div><small><i>找最好的朋友买/卖最好的东西</i></small></div>
+      <div></div>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+    <div class="mt20 box padding10 clearfix">
+      <div>我有店铺我骄傲：</div>
+      <form class="form-inline" method="get" action="<%= new_store_path %>">
+        <div class="mt10 mb10">
+          <input type="text" name="url" style="padding: 10px; width: 92%;" placeholder="输入网店地址.." value=""/>
+        </div>
+        <button type="submit" class="btn btn-info">只需10秒，免费创建</button>
+        <a title="有什么好处?" href="javascript:void(0);"><i class="icon-question-sign"></i></a>
+      </form>
+    </div>
+
+    <div class="mt20 box padding10 clearfix">
+      <div>我朋友多我骄傲：</div>
+      <div class="mt10">
+        <a href="/auth/weibo" class="btn btn-info">用新浪微博登录</a>
+        <a title="有什么好处?" href="javascript:void(0);"><i class="icon-question-sign"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
