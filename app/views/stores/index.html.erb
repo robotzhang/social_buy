@@ -1,22 +1,7 @@
 <div class="row stores">
 <% @stores.each do |store| %>
     <div class="span6">
-      <div class="store">
-          <div class="head-pic">
-            <a title="<%= store.user.name %>" href="<%= user_path(store.user.uid) %>">
-              <img style="width: 60px; height: 60px;" src="<%=store.user.image%>" />
-            </a>
-          </div>
-          <div class="info">
-            <a href="<%= store_path(store) %>"><%=store.name%></a>
-            <div class="text" style="font-size: 12px; color: #666;"><%= store.description %></div>
-            <ul class="tags unstyled clearfix">
-              <% store.businesses.each do |business| %>
-                  <li><code><%= link_to business.name, "b/"+business.name %></code></li>
-              <% end %>
-            </ul>
-          </div>
-      </div>
+      <%=render "stores/item", store: store %>
     </div>
 <% end %>
 </div>

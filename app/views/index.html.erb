@@ -1,17 +1,27 @@
 <div class="row">
   <div class="span8">
-  <% @stores.each do |store| %>
-    <%=render "stores/item", store: store %>
-  <% end %>
+    <% @stores.each do |store| %>
+      <%=render "stores/item", store: store %>
+    <% end %>
+    <div class="text-center hide">
+      <img src="<%= asset_path("loading.gif") %>"/>
+    </div>
   </div>
   <div class="span4">
-    <div class="box padding10 clearfix">
-      <div>这是个什么东东？</div>
-      <div><small><i>找最好的朋友买/卖最好的东西</i></small></div>
-      <div></div>
-      <ul>
-        <li></li>
-      </ul>
+    <div class="box padding20 clearfix">
+      <div>
+        这是个什么东东？
+        <a title="了解更多?" href="javascript:void(0);"><i class="icon-question-sign"></i></a>
+      </div>
+      <div><small>找最好的朋友买/卖最好的东西</small></div>
+      <div class="mt10">
+        <div>告诉好朋友你有好东西：</div>
+        <div>—— <strong>简单，免费，有面子</strong></div>
+      </div>
+      <div class="mt10">
+        <div>买朋友的东西：</div>
+        <div>—— <strong>便宜，可靠，零纠纷</strong></div>
+      </div>
     </div>
     <div class="mt20 box padding10 clearfix">
       <div>我有店铺我骄傲：</div>
