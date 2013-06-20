@@ -1,7 +1,7 @@
 <style>
   body { background: url(<%=asset_path("body_bg.jpg")%>) center 0 no-repeat; }
 </style>
-<div class="store">
+<div class="store box padding20">
   <h2><%= @store.name %></h2>
   <div><%= @store.description %></div>
 
@@ -10,7 +10,7 @@
   <div>店铺链接</div>
   <ul>
     <% @store.links.each do |link| %>
-    <li><a href="<%=link.url%>"><%=link.name%></a></li>
+        <li><a href="<%=link.url%>"><%=link.name%></a></li>
     <% end %>
   </ul>
 </div>
