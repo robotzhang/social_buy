@@ -16,7 +16,7 @@
       <div class="fs12" style="margin-bottom: 8px;"><%= truncate(store.description, :length => 100) %></div>
 
       <ul class="tags unstyled clearfix">
-        <li style="margin-right: 5px;"><i class="icon-tags" title="主营业务"></i></li>
+        <li><i class="icon-tags" title="主营业务"></i></li>
         <% store.businesses.each do |business| %>
             <li><code><%= link_to business.name, "b/"+business.name %></code></li>
         <% end %>
