@@ -1,16 +1,16 @@
-<div style="margin-bottom: 10px;">
-  <div><%= @store.name %></div>
-  <small><%= @store.description %></small>
-</div>
-<ul class="tags unstyled clearfix">
-  <li style="margin-right: 5px;"><i title="主营产品" class="icon-tags"></i></li>
-  <% @store.businesses.each do |business| %>
-      <li><code><%= link_to business.name, "b/"+business.name %></code></li>
-  <% end %>
-</ul>
+<style>
+  body { background: url(<%=asset_path("body_bg.jpg")%>) center 0 no-repeat; }
+</style>
+<div class="store">
+  <h2><%= @store.name %></h2>
+  <div><%= @store.description %></div>
 
-<ul class="unstyled clearfix">
-  <% @store.links.each do |link| %>
-  <li><a href="<%= link.url %>"><%= link.url %></a></li>
-  <% end %>
-</ul>
+  <%= render "stores/tags", :businesses => @store.businesses %>
+
+  <div>店铺链接</div>
+  <ul>
+    <% @store.links.each do |link| %>
+    <li><a href="<%=link.url%>"><%=link.name%></a></li>
+    <% end %>
+  </ul>
+</div>
