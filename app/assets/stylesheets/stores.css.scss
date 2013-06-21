@@ -10,3 +10,11 @@
 .new-store-form input[type="text"] { width: 410px; height: 20px; line-height: 19px; padding: 7px;  }
 .new-store-form textarea { width: 410px; }
 
+.store { background-color: #FAFAFA; border-radius: 3px; }
+.store .content { border-right: #D6DFDB 1px solid; margin-right: 230px; padding: 20px; }
+.store .content h2 {  font-size: 28px; margin-top: 0; }
+.store .sidebar { width: 190px; float: right; padding: 20px; }
+.store .user img { width: 80px; height: 80px; border-radius: 3px; }
+.store .user .info {  }
+.store .sidebar .line { border-bottom: #E6E6E6; height: 1px; }
+

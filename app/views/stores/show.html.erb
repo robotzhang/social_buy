@@ -1,16 +1,47 @@
 <style>
   body { background: url(<%=asset_path("body_bg.jpg")%>) center 0 no-repeat; }
 </style>
-<div class="store box padding20">
-  <h2><%= @store.name %></h2>
-  <div><%= @store.description %></div>
+<div class="store clearfix">
+  <div class="sidebar">
+    <div class="user clearfix">
+      <div class="pic pull-left" style="margin-right: 10px;">
+        <a href="<%= user_path(@store.user.uid) %>"><img src="<%= @store.user.image %>" /></a>
+      </div>
+      <div class="info pull-left">
+        <strong><%=@store.user.name%></strong>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div>
+      <div>好友们</div>
+      <ul>
+        <% @store.user.friends.each do |friend| %>
+        <li><%= friend.name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
-  <%= render "stores/tags", :businesses => @store.businesses %>
+  <div class="content clearfix">
+    <h2><%= @store.name %></h2>
+    <div><%= @store.description %></div>
+    <%= render "stores/tags", :businesses => @store.businesses %>
+    <div>店铺链接</div>
+    <ul>
+      <% @store.links.each do |link| %>
+          <li><a href="<%=link.url%>"><%=link.name%></a></li>
+      <% end %>
+    </ul>
 
-  <div>店铺链接</div>
-  <ul>
-    <% @store.links.each do |link| %>
-        <li><a href="<%=link.url%>"><%=link.name%></a></li>
-    <% end %>
-  </ul>
+    <div>联系</div>
+    <ul>
+      <li>email</li>
+      <li>phone</li>
+      <li>sina</li>
+      <li>renren</li>
+      <li>qq</li>
+    </ul>
+    <div>分享，用百度分享组件</div>
+    <div>所有人信息，最新微博</div>
+  </div>
 </div>
