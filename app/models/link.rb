@@ -11,6 +11,12 @@ class Link < ActiveRecord::Base
     page = Nokogiri::HTML(open(url))
     link.url = url
     link.name = page.css("title").text
+    favicon = page.xpath("//link[translate(
+      @rel,
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      'abcdefghijklmnopqrstuvwxyz'
+    )='shortcut icon']/@href") # 大小写不相关
+    link.favicon = favicon.blank? ? "" : favicon.first.value
 
     [page, link]
   end

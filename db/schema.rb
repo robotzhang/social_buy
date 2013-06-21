@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614065650) do
+ActiveRecord::Schema.define(:version => 20130621033619) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "store_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130614065650) do
     t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "favicon"
   end
 
   create_table "stores", :force => true do |t|
