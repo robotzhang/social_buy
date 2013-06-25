@@ -5,4 +5,8 @@ module ApplicationHelper
     return ' class=active' if  action == 'index' && params[:controller] == 'application'
     ''
   end
+
+  def weibo_url(uid)
+    'http://weibo.com/u/'+uid
+  end
 end

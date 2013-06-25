@@ -1,47 +1,48 @@
 <style>
   body { background: url(<%=asset_path("body_bg.jpg")%>) center 0 no-repeat; }
 </style>
-<div class="store clearfix">
-  <div class="sidebar">
-    <div class="user clearfix">
-      <div class="pic pull-left" style="margin-right: 10px;">
-        <a href="<%= user_path(@store.user.uid) %>"><img src="<%= @store.user.image %>" /></a>
-      </div>
-      <div class="info pull-left">
-        <strong><%=@store.user.name%></strong>
-      </div>
-    </div>
-    <div class="line"></div>
-    <div>
-      <div>好友们</div>
+<div class="row">
+  <div class="span9">
+    <div class="store box padding20 clearfix">
+      <h2><%= @store.name %></h2>
+      <div><%= @store.description %></div>
+      <%= render "stores/tags", :businesses => @store.businesses %>
+      <div>店铺链接</div>
       <ul>
-        <% @store.user.friends.each do |friend| %>
-        <li><%= friend.name %></li>
+        <% @store.links.each do |link| %>
+            <li><a href="<%=link.url%>"><%=link.name%></a></li>
         <% end %>
       </ul>
+
+      <div><%= render "components/share" %></div>
     </div>
   </div>
+  <div class="span3">
+    <div class="sidebar box padding20">
+      <div class="pop-triangle"></div>
+      <div class="user clearfix">
+        <div class="pull-left" style="margin-right: 10px;">
+          <a target="_blank" href="<%= weibo_url(@store.user.uid) %>"><img src="<%=@store.user.image%>"/></a>
+        </div>
+        <div>
+          <div><a class="black" target="_blank" href="<%= weibo_url(@store.user.uid) %>"><%= @store.user.name %></a></div>
+          <div><small><%= @store.user.created_at.to_date %></small></div>
+          <div class="mt10"><a class="btn btn-info btn-mini" href=""><i class="icon-plus icon-white"></i> 关注</a></div>
+        </div>
+        <div class="mt10 fs12" style="text-indent: 10px; color: #777;">
+          <%= @store.user.description %>
+        </div>
+      </div>
 
-  <div class="content clearfix">
-    <h2><%= @store.name %></h2>
-    <div><%= @store.description %></div>
-    <%= render "stores/tags", :businesses => @store.businesses %>
-    <div>店铺链接</div>
-    <ul>
-      <% @store.links.each do |link| %>
-          <li><a href="<%=link.url%>"><%=link.name%></a></li>
-      <% end %>
-    </ul>
+      <div class="line"></div>
 
-    <div>联系</div>
-    <ul>
-      <li>email</li>
-      <li>phone</li>
-      <li>sina</li>
-      <li>renren</li>
-      <li>qq</li>
-    </ul>
-    <div>分享，用百度分享组件</div>
-    <div>所有人信息，最新微博</div>
+      <div class="fs12">
+        <div class="btn-group">
+          <a data-toggle="tooltip" title="发送邮件" href="mailto:<%= @store.user.email %>" class="btn btn-small"><i class="icon-envelope"></i></a>
+          <a data-toggle="tooltip" title="新浪微博" href="<%= weibo_url(@store.user.uid) %>" class="btn btn-small"><img src="<%= asset_path("sns/sina_g.png") %>"/></a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

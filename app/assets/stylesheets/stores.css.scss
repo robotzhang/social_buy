@@ -12,9 +12,14 @@
 
 .store { background-color: #FAFAFA; border-radius: 3px; }
 .store .content { border-right: #D6DFDB 1px solid; margin-right: 230px; padding: 20px; }
-.store .content h2 {  font-size: 28px; margin-top: 0; }
+.store h2 { font-size: 28px; margin-top: 0; }
 .store .sidebar { width: 190px; float: right; padding: 20px; }
 .store .user img { width: 80px; height: 80px; border-radius: 3px; }
-.store .user .info {  }
 .store .sidebar .line { border-bottom: #E6E6E6; height: 1px; }
+
+.store .contacts { margin-bottom: 0; }
+.store .contacts li { float: left; margin-right: 5px; height: 20px; }
+.sidebar .pop-triangle { margin-left: -33px; }
+.sidebar .user img { height: 80px; width: 80px; border-radius: 3px; }
+.line { border-bottom: #F5F5F5 1px solid; border-top: #fff 1px solid; margin: 10px 0; }
 

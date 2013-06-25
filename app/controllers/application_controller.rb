@@ -25,5 +25,5 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
-  helper_method :current_user, :signed_in?
+  helper_method :current_user, :signed_in?, :weibo_client
 end
