@@ -5,12 +5,12 @@
   <div class="span9">
     <div class="store box padding20 clearfix">
       <h2><%= @store.name %></h2>
-      <div><%= @store.description %></div>
       <%= render "stores/tags", :businesses => @store.businesses %>
-      <div>店铺链接</div>
-      <ul>
+      <div class="mt10"><%= @store.description %></div>
+      <div class="mt10">店铺链接：</div>
+      <ul class="unstyled">
         <% @store.links.each do |link| %>
-            <li><a href="<%=link.url%>"><%=link.name%></a></li>
+          <li><a class="black fs12" href="<%=link.url%>"><i class="icon-hand-right"></i> <%=link.name%></a></li>
         <% end %>
       </ul>
 
