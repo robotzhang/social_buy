@@ -30,6 +30,9 @@ gem "omniauth", "~> 1.0.1"
 gem 'omniauth-weibo-oauth2'
 gem 'weibo_2'
 
+# 图片上传
+gem 'carrierwave'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
