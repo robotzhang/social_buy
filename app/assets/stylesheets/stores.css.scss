@@ -10,6 +10,10 @@
 .new-store-form input[type="text"] { width: 410px; height: 20px; line-height: 19px; padding: 7px;  }
 .new-store-form textarea { width: 410px; }
 
+.edit-store-form .tags-icon { display: none; }
+.edit-store-form .dl-horizontal dt { padding: 3px 0px; width: 80px; }
+.edit-store-form .dl-horizontal dd { padding: 3px 0px; margin-left: 100px; }
+
 .store { background-color: #FAFAFA; border-radius: 3px; }
 .store .content { border-right: #D6DFDB 1px solid; margin-right: 230px; padding: 20px; }
 .store h2 { font-size: 28px; margin-top: 0; }

@@ -21,15 +21,17 @@
     <div class="sidebar box padding20">
       <div class="pop-triangle"></div>
       <div class="user clearfix">
-        <div class="pull-left" style="margin-right: 10px;">
-          <a target="_blank" href="<%= weibo_url(@store.user.uid) %>"><img src="<%=@store.user.image%>"/></a>
+        <div class="clearfix">
+          <div class="pull-left" style="margin-right: 10px;">
+            <a target="_blank" href="<%= weibo_url(@store.user.uid) %>"><img src="<%=@store.user.image%>"/></a>
+          </div>
+          <div>
+            <div><a class="black" target="_blank" href="<%= weibo_url(@store.user.uid) %>"><%= @store.user.name %></a></div>
+            <div><small><%= @store.user.created_at.to_date %></small></div>
+            <div class="mt10"><a class="btn btn-info btn-mini" href=""><i class="icon-plus icon-white"></i> 关注</a></div>
+          </div>
         </div>
-        <div>
-          <div><a class="black" target="_blank" href="<%= weibo_url(@store.user.uid) %>"><%= @store.user.name %></a></div>
-          <div><small><%= @store.user.created_at.to_date %></small></div>
-          <div class="mt10"><a class="btn btn-info btn-mini" href=""><i class="icon-plus icon-white"></i> 关注</a></div>
-        </div>
-        <div class="mt10 fs12 clearfix" style="text-indent: 10px; color: #777;">
+        <div class="mt10 fs12" style="text-indent: 10px; color: #777;">
           <%= @store.user.description %>
         </div>
       </div>

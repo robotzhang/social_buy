@@ -25,7 +25,6 @@ class StoresController < ApplicationController
 
   def edit
     @store = Store.find(params[:id])
-    render :template => "stores/new"
   end
 
   def update

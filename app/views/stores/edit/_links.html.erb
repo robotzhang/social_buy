@@ -1,0 +1,19 @@
+<p>已添加链接：</p>
+<ul>
+  <% store.links.each do |link| %>
+  <li>
+    <%=link.url%>
+    <small>(<%= link.name %>)</small>
+    <a data-toggle="tooltip" href="javascript:void(0);" title="删除(不可恢复)"><i class="icon-minus-sign"></i></a>
+  </li>
+  <% end %>
+</ul>
+<div>
+  <p>添加新链接：</p>
+  <div>
+    <form class="form-inline">
+      <input type="text" placeholder="链接url" name="url"/>
+      <button type="submit" class="btn">添加</button>
+    </form>
+  </div>
+</div>

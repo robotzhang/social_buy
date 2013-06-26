@@ -1,0 +1,25 @@
+<div class="tabbable box padding20">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">模板</a></li>
+    <li><a href="#tab2" data-toggle="tab">属性</a></li>
+    <li><a href="#tab3" data-toggle="tab">链接</a></li>
+    <li><a href="#tab4" data-toggle="tab">联系</a></li>
+  </ul>
+  <div class="tab-content fs12">
+    <div class="tab-pane active" id="tab1">
+      <%= render "stores/edit/image", store: @store %>
+    </div>
+
+    <div class="tab-pane" id="tab2">
+      <%= render "stores/edit/info", store: @store %>
+    </div>
+
+    <div class="tab-pane" id="tab3">
+      <%= render "stores/edit/links", store: @store %>
+    </div>
+
+    <div class="tab-pane" id="tab4">
+      <%= render "stores/edit/contacts", store: @store %>
+    </div>
+  </div>
+</div>
