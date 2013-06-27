@@ -1,8 +1,11 @@
 require 'open-uri'
 class User < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :contacts_attributes
   has_many :friends
   has_many :stores
+  has_many :contacts
+
+  accepts_nested_attributes_for :contacts, :allow_destroy => true
 
   validates :name, uniqueness: true, presence: true
   validates :uid, uniqueness: true, presence: true

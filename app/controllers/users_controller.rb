@@ -29,6 +29,11 @@ class UsersController < ApplicationController
 
   end
 
+  def update
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:user])
+  end
+
   protected
   def find_user
     @user = User.find_by_uid(params[:id])

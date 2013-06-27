@@ -4,6 +4,7 @@ SocialBuy::Application.routes.draw do
   resources :users do
     member do
       get "stores"
+      post "contacts"
     end
   end
   resources :stores
