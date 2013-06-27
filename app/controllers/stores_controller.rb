@@ -25,6 +25,7 @@ class StoresController < ApplicationController
 
   def edit
     @store = Store.find(params[:id])
+    render :layout => false
   end
 
   def update

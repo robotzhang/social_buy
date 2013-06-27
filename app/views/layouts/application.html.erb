@@ -18,7 +18,11 @@
         <div class="pull-right">
           <% if signed_in? %>
             <ul class="nav">
-              <li><button id="btn_edit_store" class="btn btn-success btn-small"><i class="icon-edit icon-white"></i> 编辑店铺</button></li>
+              <% unless @store.blank? %>
+              <li>
+                <button data-toggle="modal" data-href="<%= edit_store_path(@store) %>" id="btn_edit_store" class="btn btn-success btn-small"><i class="icon-edit icon-white"></i> 编辑店铺</button>
+              </li>
+              <% end %>
               <li class="dropdown">
                 <a href="<%= user_path(current_user.uid) %>" class="dropdown-toggle" data-toggle="dropdown">
                   <%= current_user.name %>

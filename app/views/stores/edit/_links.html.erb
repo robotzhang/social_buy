@@ -4,7 +4,7 @@
     <% store.links.each do |link| %>
     <% next if link.id.blank? %>
     <li>
-      <a href="<%=link.url%>" target="_blank"><%=link.url%></a>
+      <a class="black" href="<%=link.url%>" target="_blank"><%=link.url%></a>
       <small>(<%= link.name %>)</small>
       <a data-toggle="tooltip" href="javascript:void(0);" title="删除(不可恢复)"><i class="icon-minus-sign"></i></a>
     </li>

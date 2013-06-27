@@ -10,7 +10,7 @@
       <div class="mt10">店铺链接：</div>
       <ul class="unstyled">
         <% @store.links.each do |link| %>
-          <li><a class="black fs12" href="<%=link.url%>"><i class="icon-hand-right"></i> <%=link.name%></a></li>
+          <li><a target="_blank" class="black fs12" href="<%=link.url%>"><i class="icon-hand-right"></i> <%=link.name%></a></li>
         <% end %>
       </ul>
 
@@ -46,5 +46,12 @@
       </div>
 
     </div>
+  </div>
+</div>
+
+<div id="panel_edit_store" class="modal hide">
+  <div class="modal-body">
+    <button type="button" class="close" title="关闭编辑店铺" onclick="$('#panel_edit_store').hide();">×</button>
+    <div class="content"></div>
   </div>
 </div>
