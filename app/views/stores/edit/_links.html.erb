@@ -1,19 +1,30 @@
-<p>已添加链接：</p>
-<ul>
-  <% store.links.each do |link| %>
-  <li>
-    <%=link.url%>
-    <small>(<%= link.name %>)</small>
-    <a data-toggle="tooltip" href="javascript:void(0);" title="删除(不可恢复)"><i class="icon-minus-sign"></i></a>
-  </li>
-  <% end %>
-</ul>
-<div>
-  <p>添加新链接：</p>
+<div id="panel_link">
+  <p>已添加链接：</p>
+  <ul>
+    <% store.links.each do |link| %>
+    <% next if link.id.blank? %>
+    <li>
+      <a href="<%=link.url%>" target="_blank"><%=link.url%></a>
+      <small>(<%= link.name %>)</small>
+      <a data-toggle="tooltip" href="javascript:void(0);" title="删除(不可恢复)"><i class="icon-minus-sign"></i></a>
+    </li>
+    <% end %>
+  </ul>
   <div>
-    <form action="" class="form-inline">
-      <input type="text" placeholder="链接url" name="url"/>
-      <button type="submit" class="btn">添加</button>
-    </form>
+    <p>添加新链接：</p>
+    <% if store.errors.any? %>
+    <div class="alert alert-error">
+      <button title="关闭" type="button" class="close" data-dismiss="alert">×</button>
+      <%= store.errors.full_messages.join("<br>").html_safe %>
+    </div>
+    <% end %>
+    <%= form_for store, remote: true, html: { class: 'form-inline' } do |f| %>
+        <%= f.hidden_field :id %>
+        <%= f.fields_for :links, Link.new do |b| %>
+            <%= b.hidden_field :id %>
+            <%= b.text_field :url, :placeholder => '链接url' %>
+            <%= b.submit "添加", :class => 'btn' %>
+        <% end %>
+    <% end %>
   </div>
 </div>

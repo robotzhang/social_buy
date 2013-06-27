@@ -6,6 +6,13 @@ class Link < ActiveRecord::Base
   #validates :name, presence: true, uniqueness: true
   validates :url, presence: true, uniqueness: {scope: :store_id}
 
+  before_validation do
+    self.url = self.url.starts_with?('http') ? self.url : 'http://' + self.url
+    page, link = Link.parser(self.url)
+    self.name = link.name
+    self.favicon = link.favicon
+  end
+
   def self.parser(url)
     link = Link.new
     page = Nokogiri::HTML(open(url))

@@ -30,6 +30,14 @@ class StoresController < ApplicationController
   def update
     @store = Store.find(params[:id])
     @store.businesses = Business.find_or_new_by_names(params[:businesses].split(" ")) if params[:businesses]
-    @store.update_attributes(params[:store]) ? redirect_to(stores_user_path(current_user.uid)) : render(:action => :edit)
+    respond_to do |format|
+      if @store.update_attributes(params[:store])
+        format.html { redirect_to(stores_user_path(current_user.uid)) }
+        format.js
+      else
+        format.html { render(:action => :edit) }
+        format.js
+      end
+    end
   end
 end
