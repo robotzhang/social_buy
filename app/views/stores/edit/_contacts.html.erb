@@ -3,23 +3,34 @@
   <div class="mb10">
     <ul class="unstyled clearfix">
     <% user.contacts.each do |contact| %>
+      <% unless contact.id.blank? %>
       <li class="pull-left" style="margin-right: 15px;">
         <div class="input-prepend">
           <div class="btn-group">
-            <a title="" href="javascript:void(0);" class="btn"><%= contact.provider %></a>
+            <a title="" href="javascript:void(0);" class="btn">
+              <!--i class="icon-<%= contact.provider %>"></i-->
+              <%= contact.provider_cn %>
+            </a>
             <a title="删除" class="btn" href="javascript:void(0);"><i class="icon-remove"></i></a>
           </div>
         </div>
       </li>
+      <% end %>
     <% end %>
     </ul>
   </div>
   <p>绑定更多的联系方式</p>
+  <% if user.errors.any? %>
+    <div class="alert alert-error">
+      <button title="关闭" type="button" class="close" data-dismiss="alert">×</button>
+      <%= user.errors.full_messages.join("<br>").html_safe %>
+    </div>
+  <% end %>
   <%= form_for user, remote: true, html: { class: 'form-inline' } do |f| %>
     <%= f.hidden_field :id %>
     <%= f.fields_for :contacts, Contact.new do |b| %>
       <%= b.hidden_field :id %>
-      <%= b.select :provider, Contact.providers, {}, {:class => 'input-small'} %>
+      <%= b.select :provider, Contact.providers(user.contacts), {}, {:class => 'input-small'} %>
       <%= b.text_field :way, :placeholder => '联系方式' %>
       <%= b.submit "添加", :class => 'btn' %>
     <% end %>
