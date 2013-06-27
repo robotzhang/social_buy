@@ -5,6 +5,8 @@ class Store < ActiveRecord::Base
   has_many :businesses, :dependent => :destroy
   accepts_nested_attributes_for :links, :businesses, :allow_destroy => true
 
+  has_one :theme
+
   validates :name, presence: true, uniqueness: true
 
   def self.parser_description(page)

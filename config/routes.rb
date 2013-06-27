@@ -7,5 +7,6 @@ SocialBuy::Application.routes.draw do
     end
   end
   resources :stores
+  resources :themes
   get '/auth/:provider/callback', to: 'users#create'
 end

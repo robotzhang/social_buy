@@ -11,9 +11,14 @@
 </div-->
 <div class="tab-content">
   <div class="tab-pane active" id="img_tab1">
-    <form class="form-inline">
-       <input type="file" name="image"/><button class="btn">上传</button>
-    </form>
+    <div><small>已使用：<%= store.theme.bg_image unless store.theme.blank? %></small></div>
+
+    <%= form_for (store.theme.blank? ? Theme.new(store_id: store.id) : store.theme), :html => {:multipart => true} do |f| %>
+        <%= f.file_field :bg_image %>
+        <%= f.hidden_field :store_id %>
+        <%= f.hidden_field :id %>
+        <button type="submit" class="btn">上传</button>
+    <% end %>
   </div>
 
   <!--div class="tab-pane" id="img_tab2">
