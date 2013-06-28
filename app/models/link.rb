@@ -6,7 +6,7 @@ class Link < ActiveRecord::Base
   #validates :name, presence: true, uniqueness: true
   validates :url, presence: true, uniqueness: {scope: :store_id}
 
-  before_validation do
+  before_create do
     self.url = self.url.starts_with?('http') ? self.url : 'http://' + self.url
     page, link = Link.parser(self.url)
     self.name = link.name

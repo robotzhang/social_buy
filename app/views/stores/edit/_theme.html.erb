@@ -1,27 +1,35 @@
-<p>
-  背景图片
-  <a href="javascript:void(0);" data-toggle="tooltip" title="美观大气的图片可以让店铺一下子脱颖而出"><i class="icon-info-sign"></i></a>
-</p>
-<!--div>
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#img_tab1" data-toggle="tab">本地上传</a></li>
-    <li><a href="#img_tab2" data-toggle="tab">网络图片</a></li>
-    <li><a href="#img_tab3" data-toggle="tab">曾经使用</a></li>
-  </ul>
-</div-->
-<div class="tab-content">
-  <div class="tab-pane active" id="img_tab1">
-    <%= form_for (store.theme.blank? ? Theme.new(store_id: store.id) : store.theme), :html => {:multipart => true, class: 'well well-small'} do |f| %>
-        <%= f.file_field :bg_image %>
-        <%= f.hidden_field :store_id %>
-        <%= f.hidden_field :id %>
-        <button type="submit" class="btn">上传</button>
-    <% end %>
-  </div>
-  <!--div class="tab-pane" id="img_tab2">
-    <form class="form-inline">
-      <input type="text" id="image_url" name="image_url" placeholder="图片url"/>
-      <button class="btn">确定</button>
-    </form>
+<div id="panel_theme">
+  <p>
+    背景图片
+    <a href="javascript:void(0);" data-toggle="tooltip" title="美观大气的图片可以让店铺一下子脱颖而出"><i class="icon-info-sign"></i></a>
+  </p>
+  <!--div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#img_tab1" data-toggle="tab">本地上传</a></li>
+      <li><a href="#img_tab2" data-toggle="tab">网络图片</a></li>
+      <li><a href="#img_tab3" data-toggle="tab">曾经使用</a></li>
+    </ul>
   </div-->
+  <% if theme.errors.any? %>
+  <div class="alert alert-error clearfix">
+    <button title="关闭" type="button" class="close" data-dismiss="alert">×</button>
+    <%= theme.errors.full_messages.join("<br>").html_safe %>
+  </div>
+  <% end %>
+  <div class="tab-content">
+    <div class="tab-pane active" id="img_tab1">
+      <%= form_for theme, remote: true, :html => {:multipart => true, class: 'form-inline well well-small'} do |f| %>
+          <div class="pull-left"><%= f.file_field :bg_image %></div>
+          <%= f.hidden_field :store_id %>
+          <%= f.hidden_field :id %>
+          <button type="submit" class="btn">上传</button>
+      <% end %>
+    </div>
+    <!--div class="tab-pane" id="img_tab2">
+      <form class="form-inline">
+        <input type="text" id="image_url" name="image_url" placeholder="图片url"/>
+        <button class="btn">确定</button>
+      </form>
+    </div-->
+  </div>
 </div>

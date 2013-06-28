@@ -7,7 +7,7 @@
   </ul>
   <div class="tab-content fs12">
     <div class="tab-pane active" id="tab1">
-      <%= render "stores/edit/theme", store: @store %>
+      <%= render "stores/edit/theme", theme: @store.theme || Theme.new(store_id: @store.id) %>
     </div>
 
     <div class="tab-pane" id="tab2">

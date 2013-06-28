@@ -1,5 +1,5 @@
 <style>
-  body { background: url(<%=asset_path("body_bg.jpg")%>) center 0 no-repeat; }
+  body { background: url(<%= @store.theme.nil? ? asset_path('body_bg.jpg') : @store.theme.bg_image %>) center 0 no-repeat; }
 </style>
 <div class="row">
   <div class="span9">
@@ -54,7 +54,7 @@
   <div class="modal-body">
     <button type="button" class="close" title="关闭编辑店铺" onclick="$('#panel_edit_store').hide();">×</button>
     <div class="content">
-      <div class="loading" class="text-center"><img src="<%= asset_path("loading.gif") %>"/></div>
+      <div class="loading"><img src="<%= asset_path("loading.gif") %>"/></div>
     </div>
   </div>
 </div>
