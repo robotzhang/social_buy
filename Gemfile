@@ -33,6 +33,9 @@ gem 'weibo_2'
 # 图片上传
 gem 'carrierwave'
 
+# 权限管理
+gem 'cancan'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

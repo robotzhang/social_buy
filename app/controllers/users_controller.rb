@@ -1,6 +1,8 @@
 #coding=utf-8
 class UsersController < ApplicationController
   before_filter :find_user, :only => [:show, :stores]
+  load_and_authorize_resource :except => [:create]
+
   def new
 
   end
@@ -22,6 +24,8 @@ class UsersController < ApplicationController
 
   def logout
     self.current_user = nil
+    session[:token] = nil
+    session[:expires_at] = nil
     redirect_to (params[:back_url] || root_path)
   end
 

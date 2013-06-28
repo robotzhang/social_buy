@@ -49,6 +49,7 @@
   </div>
 </div>
 
+<% if can? :update, @store %>
 <div id="panel_edit_store" class="modal hide" style="margin-left: 0;">
   <div class="modal-body">
     <button type="button" class="close" title="关闭编辑店铺" onclick="$('#panel_edit_store').hide();">×</button>
@@ -57,3 +58,4 @@
     </div>
   </div>
 </div>
+<% end %>

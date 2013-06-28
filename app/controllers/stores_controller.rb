@@ -1,5 +1,7 @@
 #coding=utf-8
 class StoresController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @stores = Store.page(params[:page]).per(16)
   end

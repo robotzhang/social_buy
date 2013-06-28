@@ -36,4 +36,8 @@ class User < ActiveRecord::Base
     client.get_token_from_hash({:access_token => token,:expires_at => expires_at})
     client
   end
+
+  def has_role?(role)
+    self.role == role.to_s
+  end
 end
