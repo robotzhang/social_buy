@@ -11,6 +11,9 @@ class Ability
       can :manage, Store do |store|
         (store.user_id == user.id)
       end
+      can :manage, Theme do |theme|
+        (theme.store.user_id == user.id)
+      end
       can [:update, :logout], User do |me|
         me.id == user.id
       end
