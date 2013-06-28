@@ -1,0 +1,10 @@
+<div class="info">
+    <h2><%= store.name %></h2>
+    <%= render "stores/tags", :businesses => store.businesses %>
+    <div class="mt10"><%= store.description %></div>
+    <div class="mt10">店铺链接：</div>
+
+    <%= render "stores/show/links", links: store.links %>
+
+    <div><%= render "components/share" %></div>
+</div>

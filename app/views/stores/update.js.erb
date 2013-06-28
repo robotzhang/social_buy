@@ -1,2 +1,13 @@
-var response = '<%= j render "stores/edit/links", store: @store %>';
-$('#panel_link').replaceWith(response);
+<% if params[:tab] == 'links' %>
+    var response = '<%= j render "stores/edit/links", store: @store %>';
+    $('#panel_link').replaceWith(response);
+    <% if @store.errors.blank? %>
+        $('.store .links').replaceWith('<%= j render "stores/show/links", links: @store.links %>');
+    <% end %>
+<% elsif params[:tab] == 'info' %>
+    var response =  '<%= j render "stores/edit/info", store: @store %>';
+    $('#panel_info').replaceWith(response);
+    <% if @store.errors.blank? %>
+        $('.store .info').replaceWith('<%= j render "stores/show/info", store: @store %>');
+    <% end %>
+<% end %>

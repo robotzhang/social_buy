@@ -1,0 +1,9 @@
+<ul class="unstyled links">
+  <% links.each do |link| %>
+      <li>
+        <a target="_blank" class="black fs12" href="<%=link.url%>">
+          <i class="icon-hand-right"></i>
+          <%= link.name.blank? ? link.url : link.name %></a>
+      </li>
+  <% end %>
+</ul>

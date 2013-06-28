@@ -4,17 +4,7 @@
 <div class="row">
   <div class="span9">
     <div class="store box padding20 clearfix">
-      <h2><%= @store.name %></h2>
-      <%= render "stores/tags", :businesses => @store.businesses %>
-      <div class="mt10"><%= @store.description %></div>
-      <div class="mt10">店铺链接：</div>
-      <ul class="unstyled">
-        <% @store.links.each do |link| %>
-          <li><a target="_blank" class="black fs12" href="<%=link.url%>"><i class="icon-hand-right"></i> <%=link.name%></a></li>
-        <% end %>
-      </ul>
-
-      <div><%= render "components/share" %></div>
+      <%= render "stores/show/info", store: @store %>
     </div>
   </div>
   <div class="span3">

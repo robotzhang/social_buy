@@ -1,4 +1,6 @@
 class ThemesController < ApplicationController
+  load_and_authorize_resource
+
   def update
     @theme = Theme.find(params[:id])
     @theme.update_attributes(params[:theme])

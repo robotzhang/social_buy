@@ -19,6 +19,7 @@
     </div>
     <% end %>
     <%= form_for store, remote: true, html: { class: 'form-inline' } do |f| %>
+        <input type="hidden" name="tab" value="links"/>
         <%= f.hidden_field :id %>
         <%= f.fields_for :links, Link.new do |b| %>
             <%= b.hidden_field :id %>

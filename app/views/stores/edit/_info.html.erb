@@ -1,21 +1,28 @@
-<%= form_for store, :html => {:class=>"form-horizontal edit-store-form"} do |f| %>
-  <dl class="dl-horizontal">
-    <dt>店铺名称</dt>
-    <dd>
-      <span><%= store.name  %></span>
-      <%= f.text_field :name, class: 'hide' %>
-    </dd>
+<div id="panel_info">
+<%= form_for store, remote: true, html: { class: 'form-inline mb0' } do |f| %>
+    <input type="hidden" name="tab" value="info"/>
+    <div class="mb10">
+      <span>店铺名称：</span>
+      <%= f.text_field :name, style: 'width: 447px;' %>
+    </div>
 
-    <dt>主营产品</dt>
-    <dd>
+    <div class="mb10">
+      <div>主营业务：<small class="muted">多个主营业务用空格隔开</small></div>
       <% businesses_str = store.businesses.map {|business| business.name}.join(" ") unless @store.businesses.blank? %>
-      <span><%= render "stores/tags", businesses: store.businesses %></span>
-      <input type="text" class="hide" name="businesses" value="<%= businesses_str %> "/>
-    </dd>
+      <div><input style="width: 510px;" type="text" name="businesses" value="<%= businesses_str %> "/></div>
+    </div>
 
-    <dt>店铺简介</dt>
-    <dd>
-      <div><%= store.description %></div>
-    </dd>
-  </dl>
+    <div class="mb10">
+      <span>店铺简介：</span>
+      <div>
+        <%= f.text_area :description, rows: 5, style: 'width:510px;' %>
+      </div>
+    </div>
+
+    <div>
+      <div class="controls">
+        <%= f.submit '提交', class: 'btn' %>
+      </div>
+    </div>
 <% end %>
+</div>
