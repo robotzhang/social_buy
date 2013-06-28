@@ -1,3 +1,3 @@
 var response = '<%= j render "stores/edit/theme", theme: @theme %>';
 $('#panel_theme').replaceWith(response);
-$('body').css({'background-image': @theme.image});
+$('body').css({'background-image': '<%=@theme.bg_image%>'});

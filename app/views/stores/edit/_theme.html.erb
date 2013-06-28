@@ -18,7 +18,8 @@
   <% end %>
   <div class="tab-content">
     <div class="tab-pane active" id="img_tab1">
-      <%= form_for theme, remote: true, :html => {:multipart => true, class: 'form-inline well well-small'} do |f| %>
+      <iframe class="hide" id='upload_bg_image' name="upload_bg_image" onload="eval($(this).contents().find('body').find('pre').html());"></iframe>
+      <%= form_for theme, url: theme_path(theme, format: 'js'), :html => {multipart: true, target: 'upload_bg_image', class: 'form-inline well well-small'} do |f| %>
           <div class="pull-left"><%= f.file_field :bg_image %></div>
           <%= f.hidden_field :store_id %>
           <%= f.hidden_field :id %>
