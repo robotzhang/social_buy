@@ -6,7 +6,7 @@
     <li>
       <a class="black" href="<%=link.url%>" target="_blank"><%=link.url%></a>
       <small>(<%= link.name %>)</small>
-      <a data-toggle="tooltip" href="javascript:void(0);" title="删除(不可恢复)"><i class="icon-minus-sign"></i></a>
+      <%= link_to raw("<i class='icon-minus-sign'></i>"), link_path(link), remote: true, :confirm => "确定删除?", :method=>:delete %>
     </li>
     <% end %>
   </ul>

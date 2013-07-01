@@ -11,7 +11,7 @@
               <!--i class="icon-<%= contact.provider %>"></i-->
               <%= contact.provider_cn %>
             </a>
-            <a title="删除" class="btn" href="javascript:void(0);"><i class="icon-minus-sign"></i></a>
+            <%= link_to raw("<i class='icon-minus-sign'></i>"), contact_path(contact), remote: true, :confirm => "确定删除?", :method=>:delete, :class => 'btn' %>
           </div>
         </div>
       </li>
