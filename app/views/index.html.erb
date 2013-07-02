@@ -32,6 +32,12 @@
     </div>
     <div class="mt20 box padding10 clearfix">
       <div>我有店铺我骄傲：</div>
+      <% if signed_in? && current_user.stores.any? %>
+      <a class="black" href="<%= store_path(current_user.stores[0]) %>">
+        <i class="icon-hand-right"></i>
+        <%= current_user.stores[0].name %>
+      </a>
+      <% else %>
       <form class="form-inline" method="get" action="<%= new_store_path %>">
         <div class="mt10 mb10">
           <input type="text" name="url" style="padding: 10px; width: 92%;" placeholder="输入网店地址.." value=""/>
@@ -39,8 +45,10 @@
         <button type="submit" class="btn btn-info">只需10秒，免费创建</button>
         <a title="有什么好处?" href="javascript:void(0);"><i class="icon-question-sign"></i></a>
       </form>
+      <% end %>
     </div>
 
+    <% unless signed_in? %>
     <div class="mt20 box padding10 clearfix">
       <div>我朋友多我骄傲：</div>
       <div class="mt10">
@@ -48,5 +56,6 @@
         <a title="有什么好处?" href="javascript:void(0);"><i class="icon-question-sign"></i></a>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
