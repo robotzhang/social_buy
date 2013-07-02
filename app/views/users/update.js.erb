@@ -1,2 +1,5 @@
 var response = '<%= j render "stores/edit/contacts", user: @user %>';
 $('#panel_contact').replaceWith(response);
+$('#contacts').replaceWith('<%= j render "contacts/list_sidebar", user: @user %>');
+
+$('a[data-toggle="tooltip"]').tooltip({placement: 'top'});

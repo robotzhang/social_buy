@@ -28,11 +28,8 @@
 
       <div class="line"></div>
 
-      <div class="fs12">
-        <div class="btn-group">
-          <a data-toggle="tooltip" title="发送邮件" href="mailto:<%= @store.user.email %>" class="btn btn-small"><i class="icon-envelope"></i></a>
-          <a data-toggle="tooltip" title="新浪微博" href="<%= weibo_url(@store.user.uid) %>" class="btn btn-small"><img src="<%= asset_path("sns/sina_g.png") %>"/></a>
-        </div>
+      <div class="fs12" id="contacts">
+        <%= render "contacts/list_sidebar", user: @store.user %>
       </div>
 
     </div>

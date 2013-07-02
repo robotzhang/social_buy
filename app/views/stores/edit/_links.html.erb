@@ -6,7 +6,7 @@
     <li>
       <a class="black" href="<%=link.url%>" target="_blank"><%=link.url%></a>
       <small>(<%= link.name %>)</small>
-      <%= link_to raw("<i class='icon-minus-sign'></i>"), link_path(link), remote: true, :confirm => "确定删除?", :method=>:delete %>
+      <%= link_to raw("<i class='icon-minus-sign'></i>"), link_path(link), remote: true, :method=>:delete %>
     </li>
     <% end %>
   </ul>

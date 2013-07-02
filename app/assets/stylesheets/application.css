@@ -41,3 +41,9 @@ a.black { color: #333; }
 .tags a, .tags a:hover { color: #666; }
 
 .store {  }
+
+.icon-mobile { background: url(/assets/sns/icon-handphone.png) 0 0 no-repeat!important; }
+.icon-qq { background: url(/assets/sns/qq_g.gif) 0 0 no-repeat!important; }
+.icon-weibo { background: url(/assets/sns/sina_g.png) 0 0 no-repeat!important;  }
+.icon-renren { background: url(/assets/sns/renren_g.png) 0 0 no-repeat!important; }
+.icon-douban { background: url(/assets/sns/dou_g.png) 0 0 no-repeat!important; }

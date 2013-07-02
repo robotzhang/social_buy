@@ -1,0 +1,21 @@
+<div class="btn-group">
+  <a data-toggle="tooltip" title="发送邮件" href="mailto:<%= user.email %>" class="btn btn-small">
+    <i class="icon-envelope"></i>
+  </a>
+  <a data-toggle="tooltip" title="新浪微博" href="<%= weibo_url(user.uid) %>" class="btn btn-small">
+    <i class="icon-weibo"></i>
+  </a>
+  <% user.contacts.each do |contact| %>
+    <% if ['douban', 'renren'].include?(contact.provider)
+         href = contact.way
+         title = "前往: "+contact.provider_cn
+       else
+         href = "javascript:void(0);"
+         title = contact.provider_cn + ':' + contact.way
+       end
+    %>
+    <a data-toggle="tooltip" title="<%= title %>" href="<%= href %>" class="btn btn-small">
+      <i class="icon-<%=contact.provider%>"></i>
+    </a>
+  <% end %>
+</div>
