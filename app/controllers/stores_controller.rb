@@ -11,10 +11,11 @@ class StoresController < ApplicationController
   end
 
   def new
-    link = params[:url]
-    link = link.starts_with?('http') ? link : 'http://'+link
-    if Link.find_by_url(link)
-      return redirect_to(stores_user_path(current_user.uid), alert: {url: link, message: '店铺已经存在'})
+    url = params[:url]
+    url = url.starts_with?('http') ? url : 'http://' + url
+    link = Link.find_by_url(url)
+    if link
+      return redirect_to(store_path(link.store), alert: {url: link, message: '店铺已经存在'})
     end
     @store = Store.new_with_url(link)
   end

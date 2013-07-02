@@ -18,9 +18,10 @@ class Ability
 
   protected
   def base_user_role(user)
-    can :manage, Store do |store|
+    can [:edit, :update], Store do |store|
       (store.user_id == user.id)
     end
+    can [:create], Store
     can :manage, Theme do |theme|
       (theme.store.user_id == user.id)
     end
