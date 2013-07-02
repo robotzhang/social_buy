@@ -19,3 +19,15 @@ $(document).ready(function() {
         return false;
     });
 });
+
+var store = {
+    upload_callback: function(iframe) {
+        var bg_image = iframe.contents().find("body").html();
+        if ($.trim(bg_image) == '') {
+            return false;
+        }
+        $('body').css({
+            'background-image': 'url(' + bg_image + ')'
+        });
+    }
+}

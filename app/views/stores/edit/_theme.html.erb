@@ -18,12 +18,15 @@
   <% end %>
   <div class="tab-content">
     <div class="tab-pane active" id="img_tab1">
-      <iframe class="hide" id='upload_bg_image' name="upload_bg_image" onload="eval($(this).contents().find('body').find('pre').html());"></iframe>
-      <%= form_for theme, url: themes_path(theme, format: 'js'), :html => {multipart: true, target: 'upload_bg_image', class: 'form-inline well well-small'} do |f| %>
+      <iframe class="hide" id='upload_bg_image' name="upload_bg_image" onload="store.upload_callback($(this));"></iframe>
+      <%= form_for theme, :html => {multipart: true, target: 'upload_bg_image', class: 'form-inline well well-small'} do |f| %>
           <div class="pull-left"><%= f.file_field :bg_image %></div>
           <%= f.hidden_field :store_id %>
           <%= f.hidden_field :id %>
           <button type="submit" class="btn">上传</button>
+          <div>
+            <small class="muted">支持png,jpg,gif格式，推荐尺寸大于1600*750</small>
+          </div>
       <% end %>
     </div>
     <!--div class="tab-pane" id="img_tab2">

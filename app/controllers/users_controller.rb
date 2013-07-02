@@ -1,7 +1,7 @@
 #coding=utf-8
 class UsersController < ApplicationController
   before_filter :find_user, :only => [:show, :stores]
-  load_and_authorize_resource :except => [:create]
+  load_and_authorize_resource :except => [:create, :stores]
 
   def new
 
