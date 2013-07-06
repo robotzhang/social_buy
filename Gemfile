@@ -45,6 +45,9 @@ gem 'cancan'
 # Use unicorn as the app server
 # gem 'unicorn'
 
+# Deploy with mina
+gem 'mina' # http://nadarei.co/mina/
+
 # Deploy with Capistrano
 # gem 'capistrano'
 
