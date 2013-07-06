@@ -10,7 +10,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'root@dian.in'
+set :domain, 'dian.in'
 set :deploy_to, '/home/www/rails/dian.in'
 set :repository, 'https://github.com/robotzhang/social_buy.git'
 set :branch, 'master'
